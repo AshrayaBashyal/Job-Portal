@@ -7,7 +7,6 @@ User = settings.AUTH_USER_MODEL    # ('accounts.User')avoids circular import err
 class EmployerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="employer_profile")
     company_name = models.CharField(max_length=150)
-    email = models.URLField(unique=True)
 
     def __Str__(self):
         return self.company_name
