@@ -8,6 +8,9 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("api/accounts/", include("apps.accounts.urls")),
+
+    
     
     # 1. Direct path to download the schema (YAML by default)
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
