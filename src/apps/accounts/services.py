@@ -1,6 +1,6 @@
 from django.db import transaction
-from companies.models import EmployerProfile
-from candidates.models import CandidateProfile
+from apps.companies.models import EmployerProfile
+from apps.candidates.models import CandidateProfile
 
 
 def register_user(email, password, role, username=None, **extra_fields):
