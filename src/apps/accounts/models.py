@@ -7,7 +7,7 @@ class User(AbstractUser):
         EMPLOYER = "EMPLOYER", "Employer"
         CANDIDATE = "CANDIDATE", "Candidate"
 
-    username=models.CharField(max_length=200, unique=False)
+    username=models.CharField(max_length=200, unique=True, null=True, blank=True)
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=20, choices=Role.choices)
 
