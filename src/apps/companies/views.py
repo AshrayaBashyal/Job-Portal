@@ -17,6 +17,16 @@ class CompanyListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(employer=self.request.user.employer_profile)
 
+class CompanyDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CompanySerializer
+    permission_classes = [IsAuthenticated, IsEmployer]
+
+    def get_queryset(self):
+        return self.request.user.employer_profile.companies.all()
+    
+    
+    
+    
 #                 OR
 
 # class CompanyCreateView(generics.CreateAPIView):
@@ -33,6 +43,7 @@ class CompanyListCreateView(generics.ListCreateAPIView):
 #     permission_classes = [IsAuthenticated, IsEmployer]
 
 #     def get_queryset(self):
+        # Go through the reverse relationship defined in your model
 #         return self.request.user.employer_profile.companies.all()
 
 
