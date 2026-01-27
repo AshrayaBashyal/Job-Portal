@@ -3,6 +3,6 @@ from .views import CompanyListCreateView, CompanyDetailView
 
 urlpatterns = [
     path("companies/", CompanyListCreateView.as_view(), name="company-list-create"),
-    path("companies/<int:pk>/", CompanyDetailView.as_view(), name="company-detail"),
+    path("companies/<int:company_id>/", CompanyDetailView.as_view(), name="company-detail"),
 
 ]

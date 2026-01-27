@@ -19,6 +19,8 @@ class CompanyListCreateView(generics.ListCreateAPIView):
 
 class CompanyDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CompanySerializer
+    lookup_url_kwarg = 'company_id'
+    
     permission_classes = [IsAuthenticated, IsEmployer]
 
     def get_queryset(self):
