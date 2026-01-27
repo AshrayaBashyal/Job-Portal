@@ -5,7 +5,7 @@ from .serializers import CompanySerializer
 from .permissions import IsEmployer
 
 
-class CompanyListCreateView(generics.D):
+class CompanyListCreateView(generics.ListCreateAPIView):
     serializer_class = CompanySerializer
     permission_classes = [IsAuthenticated, IsEmployer]
 
