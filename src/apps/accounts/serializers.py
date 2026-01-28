@@ -6,9 +6,11 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class UserRegisterSerializer(serializers.ModelSerializer):
+    role_display = serializers.CharField(source='get_role_display', read_only=True)
+
     class Meta:
         model = User
-        fields = ["email", "password", "role", "username"]
+        fields = ["email", "password", "role", "role_display", "username"]
         extra_kwargs = {
             'password': {'write_only': True, 'min_length': 6},
             'username': {'required': False, 'allow_blank': True},
@@ -26,7 +28,8 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data["user"] = {
             "id": self.user.id,
             "email": self.user.email,
-            "role": self.user.role
+            "role": self.user.role,
+            "role_display": self.user.get_role_display()
         }
         return data
 
@@ -50,7 +53,8 @@ class CustomTokenRefreshSerializer(TokenRefreshSerializer):
         data["user"] = {
             "id": user.id,
             "email": user.email,
-            "role": user.role
+            "role": user.role,
+            "role_display": user.get_role_display()
         }        
         
         return data
