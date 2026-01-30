@@ -12,3 +12,9 @@ class ApplicationSerializer(serializers.ModelSerializer):
             "status", "status_display", "applied_at"
         )
         read_only_fields = ["id", "applied_at", "status", "candidate", "status_display"]
+
+
+class ApplicationStatusUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields = ["status"] 
