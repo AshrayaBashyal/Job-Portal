@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'apps.companies.apps.CompaniesConfig',
     'apps.candidates.apps.CandidatesConfig',
     'apps.jobs.apps.JobsConfig',
+    'apps.applications.apps.ApplicationsConfig',
 
     'drf_spectacular'
 ]
