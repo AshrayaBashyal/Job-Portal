@@ -71,3 +71,13 @@ class UpdateApplicationStatusView(APIView):
             "message": "Status updated successfully.",
             "new_status": application.get_status_display() 
         })    
+
+
+class MyApplicationsView(generics.ListAPIView):
+    serializer_class = ApplicationSerializer
+    permission_classes = [IsAuthenticated, IsCandidate]
+
+    def get_queryset(self):
+        return Application.objects.filter(
+            candidate=self.request.user.candidate_profile
+        ).select_related('job', 'job__company')
