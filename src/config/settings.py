@@ -54,10 +54,13 @@ INSTALLED_APPS = [
     'apps.jobs.apps.JobsConfig',
     'apps.applications.apps.ApplicationsConfig',
 
-    'drf_spectacular'
+    'drf_spectacular',
+
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -161,6 +164,11 @@ SPECTACULAR_SETTINGS = {
 }
 
 AUTH_USER_MODEL= "accounts.User"
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
 
 
 # Internationalization
